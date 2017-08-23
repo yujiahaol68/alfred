@@ -57,3 +57,21 @@ typings/
 # dotenv environment variables file
 .env
 
+# editor
+.vscode
+tags
+
+# mac
+*.DS_Store
+
+# build tools
+node_modules/
+typings/
+
+# build folder
+build/
+
+# logfiles
+*.log
+.idea/
+.history
