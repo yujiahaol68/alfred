@@ -5,3 +5,5 @@ class Alfred extends Turing {
     super(profile);
   }
 }
+
+export { Alfred };
