@@ -7,3 +7,8 @@ export interface BotProfile {
   longIntroduction?:string[];
   job?:string;
 }
+
+export interface Connection {
+  name:string;
+  connectionInstance:any;
+}
