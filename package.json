@@ -1,7 +1,7 @@
 {
   "name": "alfred",
   "version": "1.0.0",
-  "description": "personal ai bulter",
+  "description": "personal ai butler",
   "main": "build/startup.js",
   "keywords": [
     "ai",
