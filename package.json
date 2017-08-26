@@ -13,7 +13,7 @@
     "watch": "concurrently -k -p \"[{name}]\" -n \"Typescript,Node\" -c \"cyan.bold,green.bold\" \"npm run ts-watch\" \"npm run serve\"",
     "ts-watch": "tsc --noEmitOnError -w",
     "build": "tsc --noEmitOnError",
-    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts --fix",
+    "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
     "start": "npm run build && npm run watch",
     "serve": "nodemon --watch build/ build/startup.js",
     "serve-debug": "tsc && node --inspect-brk build/startup.js"
@@ -30,7 +30,9 @@
   "homepage": "https://github.com/yujiahaol68/alfred#readme",
   "jest": {
     "globals": {
-      "__TS_CONFIG__": "tsconfig.json"
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
     },
     "moduleFileExtensions": [
       "ts",
