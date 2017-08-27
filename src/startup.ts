@@ -1,14 +1,13 @@
-import * as express from 'express';
 import * as builder from 'botbuilder';
-import * as dotenv from 'dotenv';
+import { Express } from 'express';
+
 import {
   registerBootService,
   loadConfig,
 } from './bot/bootstrap';
-import { Express } from 'express';
 
 async function boot() {
-  dotenv.config();
+  await loadConfig();
   const container = await registerBootService();
 
   const app:Express = container.resolve('express');
@@ -25,9 +24,7 @@ async function boot() {
 
   const bot = new builder.UniversalBot(connector, (session) => {
     session.send('You said: %s', session.message.text);
-    console.log(process.env.MSG);
   });
-
 }
 
 boot();

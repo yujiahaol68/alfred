@@ -12,11 +12,12 @@
     "test": "jest --forceExit",
     "watch": "concurrently -k -p \"[{name}]\" -n \"Typescript,Node\" -c \"cyan.bold,green.bold\" \"npm run ts-watch\" \"npm run serve\"",
     "ts-watch": "tsc --noEmitOnError -w",
-    "build": "tsc --noEmitOnError",
+    "build": "tsc --noEmitOnError && npm run copy-static-assets",
     "lint": "tslint -c tslint.json -p tsconfig.json src/**/*.ts",
     "start": "npm run build && npm run watch",
     "serve": "nodemon --watch build/ build/startup.js",
-    "serve-debug": "tsc && node --inspect-brk build/startup.js"
+    "serve-debug": "tsc && node --inspect-brk build/startup.js",
+    "copy-static-assets": "node copyStaticAssets.js"
   },
   "repository": {
     "type": "git",
