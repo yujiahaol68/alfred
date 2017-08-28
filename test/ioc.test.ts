@@ -1,8 +1,8 @@
 import {} from 'jest';
-import { ServiceContainer } from '../src/bot/core/ServiceContainer';
+import { Container } from '../src/bot/core/ServiceContainer';
 
 describe('Service IOC container', () => {
-  const container = new ServiceContainer();
+  const container = Container;
 
   it('should get service instance that have already registered', () => {
     container.create({
