@@ -1,12 +1,13 @@
 import { UniversalBot } from 'botbuilder';
 import { config } from './config';
 import { registerBootService } from './bot/bootstrap';
+import { Container } from './bot/core/ServiceContainer';
 
 async function boot() {
-  const container = await registerBootService();
+  await registerBootService();
 
-  const app = container.resolve('express');
-  const connector = container.resolve('botConnector');
+  const app = Container.resolve('express');
+  const connector = Container.resolve('botConnector');
 
   app.post('/api/messages', connector.listen());
   app.listen(config.botFramework.port, () => {

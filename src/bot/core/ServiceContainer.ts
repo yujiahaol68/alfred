@@ -1,7 +1,18 @@
 import { Connection } from '../../interfaces';
 
 class ServiceContainer {
-  protected readonly connections:Connection[] = [];
+  private static _instance:ServiceContainer;
+  private connections:Connection[] = [];
+
+  constructor() {
+    if (ServiceContainer._instance)
+    throw new Error('Use ServiceContainer.getInstance() to get global singleton');
+  }
+
+  public static getInstance() {
+    ServiceContainer._instance = ServiceContainer._instance || new ServiceContainer();
+    return ServiceContainer._instance;
+  }
 
   public create(connection:Connection) : void {
     if (this.has(connection.name))
@@ -9,11 +20,11 @@ class ServiceContainer {
     this.connections.push(connection);
   }
 
-  protected has(name:string) : boolean {
+  private has(name:string) : boolean {
     return this.connections.find(connection => connection.name === name) ? true : false;
   }
 
-  protected find(name:string) : Connection | undefined {
+  private find(name:string) : Connection | undefined {
     return this.connections.find(connection => connection.name === name);
   }
 
@@ -25,4 +36,4 @@ class ServiceContainer {
   }
 }
 
-export { ServiceContainer };
+export const Container = ServiceContainer.getInstance();
