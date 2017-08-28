@@ -8,6 +8,14 @@ export interface BotProfile {
   job?:string;
 }
 
+export interface MasterProfile {
+  fullName:string;
+  name:string;
+  country?:string;
+  nickName?:string;
+  shortIntroduction:string;
+}
+
 export interface Connection {
   name:string;
   connectionInstance:any;

@@ -54,9 +54,11 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment config file
-.env
+# config file
 src/config.ts
+
+# sensitive data file
+src/data/user/*.ts
 
 # editor
 .vscode
