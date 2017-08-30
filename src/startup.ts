@@ -1,9 +1,12 @@
-import { UniversalBot } from 'botbuilder';
+import {
+  UniversalBot,
+  LuisRecognizer,
+  Middleware,
+} from 'botbuilder';
 import { config } from './config';
 import { registerBootService } from './bot/bootstrap';
 import { Container } from './bot/core/ServiceContainer';
 import { LibFactory } from './bot/core/LibraryFactory';
-import { LuisRecognizer } from 'botbuilder';
 import { greeting } from './bot/library/self/dialog';
 
 async function boot() {
@@ -19,6 +22,7 @@ async function boot() {
 
   const bot = new UniversalBot(connector);
   bot.recognizer(new LuisRecognizer(config.services.luis_app_url));
+  bot.use(Middleware.sendTyping());
 
   LibFactory.createLibs(greeting);
   bot.library(LibFactory.getRootLib());
