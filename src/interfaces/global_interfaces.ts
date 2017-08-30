@@ -29,6 +29,7 @@ interface BotConfig {
 
 interface ServiceConfig {
   luis_app_url:string;
+  chatter_bot_url:string;
 }
 
 export interface Config {

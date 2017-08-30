@@ -7,5 +7,6 @@ export const config:Config = {
   },
   services: {
     luis_app_url: '',
+    chatter_bot_url: '',
   },
 };
