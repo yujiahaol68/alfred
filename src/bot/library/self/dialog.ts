@@ -5,9 +5,6 @@ export const greeting:DialogReady = {
   waterFall: [
     (session, args, next) => {
       session.say('Hi !', 'Hi');
-      if (args.intent.entities[0].type == 'self') {
-        session.say('Yep. This is Alfred');
-      }
     },
   ],
   actions: {

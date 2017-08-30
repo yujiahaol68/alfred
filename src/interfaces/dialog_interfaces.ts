@@ -2,7 +2,6 @@ import {
   ITriggerActionOptions,
   IDialogWaterfallStep,
   Dialog,
-  Library,
 } from 'botbuilder';
 
 interface ActionSheets {

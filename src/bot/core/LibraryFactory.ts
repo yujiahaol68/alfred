@@ -16,7 +16,7 @@ class LibraryFactory {
     const waterDialog = new WaterfallDialog(materials.waterFall);
     const dialog = waterDialog.triggerAction(materials.actions.triggerAction);
     this.attachAdditionalAction(dialog);
-    // TODO implement find lib function
+    // TODO: implement find lib function
     const lib = this.findLibOrCreate('basic');
     lib.dialog(materials.name, dialog);
     this._knowledge.push(lib);

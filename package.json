@@ -71,6 +71,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "botbuilder": "^3.9.1",
+    "botbuilder-cognitiveservices": "^1.1.0",
     "express": "^4.15.4",
     "inversify": "^4.3.0",
     "lodash": "^4.17.4",
