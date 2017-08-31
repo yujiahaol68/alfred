@@ -6,6 +6,7 @@ export interface BotProfile {
   shortIntroduction:string;
   longIntroduction?:string[];
   job?:string;
+  keyword:string[];
 }
 
 export interface MasterProfile {
