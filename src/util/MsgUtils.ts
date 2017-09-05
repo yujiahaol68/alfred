@@ -16,6 +16,11 @@ export class MsgUtils {
     return EntityRecognizer.parseBoolean(msg);
   }
 
+  public static has(msg:string, matches:string) : boolean {
+    const reg = new RegExp(matches, 'gi');
+    return reg.test(msg);
+  }
+
   public static extract(type:string, msg:string) {
     // TODO: ues regular expression to extract specify str
   }

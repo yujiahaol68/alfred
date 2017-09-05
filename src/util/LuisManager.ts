@@ -6,7 +6,7 @@ export class LuisManager {
 
   public static getEntityContent(args:any, entityName:string) {
     const entity = EntityRecognizer.findEntity(args.intent.entities, entityName);
-    return entity.entity;
+    return entity.entity ? entity.entity : undefined;
   }
 
   public static getDate(args:any) : Date | null {
