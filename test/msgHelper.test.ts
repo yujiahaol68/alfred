@@ -17,4 +17,10 @@ describe('msg helper class', () => {
 
   });
 
+  it('should parse boolean value from sentence', () => {
+    expect(MsgUtils.meanYes('OK')).toBeTruthy();
+    expect(MsgUtils.meanYes('yes please')).toBeTruthy();
+    expect(MsgUtils.meanYes('do not')).toBeFalsy();
+  });
+
 });
