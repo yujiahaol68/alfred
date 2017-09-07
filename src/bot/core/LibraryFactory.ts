@@ -1,4 +1,7 @@
-import { DialogReady } from './../../interfaces/dialog_interfaces';
+import {
+  DialogReady,
+  LibModuleReady,
+} from './../../interfaces/dialog_interfaces';
 import {
   Dialog,
   WaterfallDialog,
@@ -12,22 +15,21 @@ class LibraryFactory {
 
   private _knowledge:Library[] = [];
 
-  public createLibs(materials:DialogReady) {
-    const waterDialog = new WaterfallDialog(materials.waterFall);
-    const dialog = waterDialog.triggerAction(materials.actions.triggerAction);
-    this.attachAdditionalAction(dialog);
-    // TODO: implement find lib function
-    const lib = this.findLibOrCreate('basic');
-    lib.dialog(materials.name, dialog);
-    this._knowledge.push(lib);
-  }
+  public createLibs(libModules:LibModuleReady[]) {
+    _.forEach(libModules, (libModule) => {
+      const lib = new Library(libModule.moduleName);
 
-  private dialogClassify(libName:string, dialogMounted:Dialog) {
+      _.forEach(libModule.dialogs, (component) => {
+        const waterDialog = new WaterfallDialog(component.waterFall);
+        const dialog = waterDialog.triggerAction(component.actions.triggerAction);
+        this.attachAdditionalAction(dialog);
 
-  }
+        lib.dialog(component.name, dialog);
+      });
 
-  private findLibOrCreate(libName:string) {
-    return new Library(libName);
+      this._knowledge.push(lib);
+    });
+
   }
 
   private attachAdditionalAction(waterDialog:Dialog) {

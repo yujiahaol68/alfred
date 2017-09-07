@@ -1,13 +1,16 @@
+import { LibModuleReady } from './../interfaces/dialog_interfaces';
 import { httpService } from './connections/express';
 import { botConnector } from './connections/botConnector';
 import { Container } from './core/ServiceContainer';
 import { LibFactory } from './core/LibraryFactory';
-import { greeting } from './library/self/dialog';
+import * as nSkill from './library';
 import { config } from '../config';
 import {
   UniversalBot,
   LuisRecognizer,
 } from 'botbuilder';
+
+import * as _ from 'lodash';
 
 const registerBootService = async () => {
   Container.create(httpService);
@@ -30,7 +33,9 @@ const botInit = async () => {
   const bot = new UniversalBot(connector);
   bot.recognizer(new LuisRecognizer(config.services.luis_app_url));
 
-  LibFactory.createLibs(greeting);
+  const nLib:LibModuleReady[] = _.values(nSkill);
+  LibFactory.createLibs(nLib);
+
   bot.library(LibFactory.getRootLib());
 };
 
