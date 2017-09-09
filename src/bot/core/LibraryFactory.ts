@@ -16,15 +16,19 @@ class LibraryFactory {
   private _knowledge:Library[] = [];
 
   public createLibs(libModules:LibModuleReady[]) {
-    _.forEach(libModules, (libModule) => {
-      const lib = new Library(libModule.moduleName);
+    _.forEach(libModules, ({ moduleName, dialogs }) => {
+      const lib = new Library(moduleName);
 
-      _.forEach(libModule.dialogs, (component) => {
-        const waterDialog = new WaterfallDialog(component.waterFall);
-        const dialog = waterDialog.triggerAction(component.actions.triggerAction);
+      _.forEach(dialogs, ({ name, waterFall, actions }) => {
+        if (!name) throw new Error('Dialog must have a name');
+        if (!waterFall) throw new Error('Dialog must contain steps!');
+        if (!actions) throw new Error('Dialog must at least contain triggerAction');
+
+        const waterDialog = new WaterfallDialog(waterFall);
+        const dialog = waterDialog.triggerAction(actions.triggerAction);
         this.attachAdditionalAction(dialog);
 
-        lib.dialog(component.name, dialog);
+        lib.dialog(name, dialog);
       });
 
       this._knowledge.push(lib);
@@ -32,7 +36,8 @@ class LibraryFactory {
 
   }
 
-  private attachAdditionalAction(waterDialog:Dialog) {
+  private attachAdditionalAction(dialog:Dialog) {
+    // TODO: it can attach different type of actions into dialog
     return;
   }
 
