@@ -30,6 +30,7 @@ interface BotConfig {
 
 interface ServiceConfig {
   luis_app_url:string;
+  bing_maps_api_key:string;
   chatter_bot_url:string;
 }
 

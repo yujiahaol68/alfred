@@ -1,4 +1,5 @@
 import { Config } from './interfaces/global_interfaces';
+
 export const config:Config = {
   botFramework: {
     port: 3978,
@@ -7,6 +8,7 @@ export const config:Config = {
   },
   services: {
     luis_app_url: '',
+    bing_maps_api_key: '',
     chatter_bot_url: '',
   },
 };
