@@ -8,6 +8,7 @@ export interface BasicStepBuilder {
 
 export interface BasicStep {
   askFor:BasicStepBuilder;
+  missMatchedHandler:IDialogWaterfallStep[];
 }
 
 // TODO: high order or builder class to inject config of the step

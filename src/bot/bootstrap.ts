@@ -4,6 +4,7 @@ import { botConnector } from './connections/botConnector';
 import { Container } from './core/ServiceContainer';
 import { LibFactory } from './core/LibraryFactory';
 import * as nSkill from './library';
+import { Basic } from './step/basic';
 import { config } from '../config';
 import {
   UniversalBot,
@@ -37,6 +38,7 @@ const botInit = async () => {
   LibFactory.createLibs(nLib);
 
   bot.library(LibFactory.getRootLib());
+  bot.dialog('/', Basic.missMatchedHandler);
 };
 
 export {

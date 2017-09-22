@@ -7,6 +7,13 @@ import {
   Prompts,
 } from 'botbuilder';
 
+const missMatchedHandler:IDialogWaterfallStep[] = [
+  (session, args, next) => {
+    // TODO: default ask chatter bot to give response
+    session.say('Sorry, I can\'t understand', 'Sorry, I can\'t understand');
+  },
+];
+
 const askFor:BasicStepBuilder = (stateMent:string, payLoad?:any) => {
 
   const attachment:IDialogWaterfallStep = (session, args, next) => {
@@ -66,4 +73,5 @@ const askFor:BasicStepBuilder = (stateMent:string, payLoad?:any) => {
 
 export const Basic:BasicStep = {
   askFor,
+  missMatchedHandler,
 };
